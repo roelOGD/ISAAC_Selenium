@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class ISAAC_LoginPageTest extends StaticClass{
 		
 		private static final String USERNAME = "piet";
-		private static final String PASSWORD = "Test16";
+		private static final String PASSWORD = "";
 		private static final String VOORBEELD_DOCUMENT_PDF = "H:\\Data\\ISAAC\\Voorbeeld Documenten\\voorbeeld.pdf";
 		private static final String AANVRAAG_URL =  "https://nwo.acc.isaac.spinozanet.nl/subsidieaanvraag?extref=1604265"; 
 		
