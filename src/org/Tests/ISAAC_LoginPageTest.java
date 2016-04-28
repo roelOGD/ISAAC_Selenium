@@ -1,31 +1,28 @@
 package org.Tests;
 
-import org.Aanvrager.AanvraagObjects_Algemeen;
-import org.Aanvrager.AanvraagObjects_Bevestiging;
-import org.Aanvrager.AanvraagObjects_NonReferenten;
-import org.Aanvrager.AanvraagObjects_Organisaties;
-import org.Aanvrager.AanvraagObjects_VraagBegroting;
-import org.Aanvrager.Relatiebeheer.RelatiebeheerObjects_ZoekenOrganisatie;
 import org.Methods.NewStandaardAanvraag;
-import org.Shared.BaseMenuMethods;
-import org.Shared.ISAAC_HomePage;
-import org.Shared.ISAAC_LoginPageObject;
 import org.Shared.StaticClass;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
 
 public class ISAAC_LoginPageTest extends StaticClass{
 		
-	
+		private static final String USERNAME = "piet";
+		private static final String PASSWORD = "Test16";
+		private static final String VOORBEELD_DOCUMENT_PDF = "H:\\Data\\ISAAC\\Voorbeeld Documenten\\voorbeeld.pdf";
+		private static final String AANVRAAG_URL =  "https://nwo.acc.isaac.spinozanet.nl/subsidieaanvraag?extref=1604265"; 
+		
+
 		@Override
 		public WebDriver getDriver() {
 			return super.getDriver();
 		}
 
+		@Test
 		public static void main (String[] args) throws InterruptedException{
-
-			NewStandaardAanvraag aanvraag = new NewStandaardAanvraag();
-			aanvraag.NewStandaardAanvraag();
-		
-
+			// Maak een nieuwe aanvraag met alle standaard waarden.
+			NewStandaardAanvraag.NewStandaardAanvraagMaken(USERNAME, PASSWORD, AANVRAAG_URL, VOORBEELD_DOCUMENT_PDF);
 		} 
+		
+		
 }

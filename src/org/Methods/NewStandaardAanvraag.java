@@ -19,12 +19,9 @@ public class NewStandaardAanvraag extends StaticClass {
 		return super.getDriver();
 	}
 
-	public static void NewStandaardAanvraag() throws InterruptedException{
+	public static void NewStandaardAanvraagMaken(String username, String password, String aanvraagUrl, String voorbeeldDocumentPdf) throws InterruptedException{
 	
-	// Ga naar ISAAC
-	driver.navigate().to("https://nwo.acc.isaac.spinozanet.nl/nl/");
-
-	// Object for the loginpage
+	// Initialiseer de objecten
 	ISAAC_LoginPageObject loginPage = new ISAAC_LoginPageObject();
 	AanvraagObjects_Algemeen aanvraag = new AanvraagObjects_Algemeen();
 	AanvraagObjects_VraagBegroting vraagBegroting = new AanvraagObjects_VraagBegroting();
@@ -35,32 +32,49 @@ public class NewStandaardAanvraag extends StaticClass {
 	BaseMenuMethods menu = new BaseMenuMethods();
 	ISAAC_HomePage homePage = new ISAAC_HomePage();
 	
+	// Ga naar ISAAC
+	driver.navigate().to("https://nwo.acc.isaac.spinozanet.nl/nl/");
+
 	//Aanmelden
-	loginPage.setText_UsernameLogin("piet");
-	loginPage.setText_PasswordLogin("");
+	loginPage.setText_TaalNederlands();	
+	loginPage.setText_UsernameLogin(username);
+	loginPage.setText_PasswordLogin(password);
 	loginPage.ClickLogin();
 		
-	menu.goToSpecifiekeAanvraag("https://nwo.acc.isaac.spinozanet.nl/subsidieaanvraag?extref=1604265");
+	// Navigeer naar de juiste aanvraag
+	menu.goToSpecifiekeAanvraag(aanvraagUrl);
 		
-	
-	aanvraag.setText_AanvraagTitle_1("Aanvraag - " +  randomNumber);
+	// Vul het tabblad algemeen in op de aanvraag
+	aanvraag.setText_AanvraagTitle_1("Aanvraag - Automatisch");
 	aanvraag.setText_AanvraagSamenvatting_1("Dit is een automatisch gegenereerde aanvraag");
 	aanvraag.setText_AanvraagStartdatumGepland_1("01-01-2019");
 	aanvraag.setText_AanvraagEinddatumGepland_1("01-01-2020");
-	aanvraag.uploadDocument_Field_Uploaden_1_1(PDF_Document);
+	aanvraag.uploadDocument_Field_Uploaden_1_1(voorbeeldDocumentPdf);
 	aanvraag.clickNext();
 	
+	// Vul de vraagbegroting van de aanvraag in 
+	vraagBegroting.clickTarievenLijst_chckbx();
+	vraagBegroting.AddVraagBegrotingItem(1, "begrotingsGroep", "omschrijving", "1", "12","1", "123456");
+	vraagBegroting.clickNext();	
+
+	// Klik op de knop "verantwoordelijke organisatie". Vervolgens wordt het zoekscherm geopend
+	organisaties.toevoegenVerwantwoordelijkeOrganisatie();
+			
+	// Zoek in het zoekscherm naar de organisatie en klik deze aan
+	zoekenRelatiebeheer.setText_Organisatieacroniem("eur");
+	zoekenRelatiebeheer.clickZoekbtn();
+	zoekenRelatiebeheer.clickSearchItem();
+	//zoekenRelatiebeheer.clickTerugbtn();
 	
-	aanvraag.setText_TabbladAlgemeen("H:\\Data\\ISAAC\\Voorbeeld Documenten\\voorbeeld.pdf");
-			
-	vraagBegroting.setText_TabbladVraagBegroting();
-			
-	organisaties.setText_TabbladOrganisaties();
-			
-	zoekenRelatiebeheer.setText_TabbladZoekenOrganisaties();
-	
+	// Ga naar het tabblad nonReferenten
 	organisaties.clickNext();
-	nonReferenten.setText_TabbladNonReferenten();
-	bevestiging.setText_TabbladBevestigen();
+	
+	// Vul het tabblad nonReferenten in
+	nonReferenten.clickChkbxNonReferenten();
+	nonReferenten.clickNext();
+	
+	// Vul het tabblad bevestigen in
+	bevestiging.clickChkbxAanvraagOndertekendn();
+	bevestiging.clickNext();
 	}
 }

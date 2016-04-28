@@ -11,14 +11,19 @@ import org.junit.Assert;
 public class ISAAC_LoginPageObject {
 
 	public ISAAC_LoginPageObject(){
-		System.out.println("test1 "+StaticClass.driver);
 		PageFactory.initElements(StaticClass.driver, this);
 	}
 	
 	@FindBy(id="_58_login")	public WebElement Field_Username;	
 	@FindBy(name="_58_password") public WebElement Field_Password;	
 	@FindBy(className="aui-button-content") public WebElement btnLogin;
-
+	@FindBy(xpath="//img[@title='Nederlands']") public WebElement taalInstellingNL;
+	
+	
+	public void setText_TaalNederlands(){
+		taalInstellingNL.click();
+	}
+	
 	public void setText_UsernameLogin(String text){
 		Field_Username.sendKeys(text);
 		Assert.assertEquals(Field_Username.getAttribute("value"), text);
@@ -32,7 +37,7 @@ public class ISAAC_LoginPageObject {
 	public ISAAC_HomePage ClickLogin(){
 		btnLogin.click();
 		WebDriverWait wait = new WebDriverWait(StaticClass.driver, 10);
-		WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("a[href*='logout']")));
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("a[href*='logout']")));
 		return new ISAAC_HomePage();
 	}
 }

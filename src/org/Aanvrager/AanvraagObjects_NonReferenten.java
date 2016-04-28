@@ -13,19 +13,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class AanvraagObjects_NonReferenten {
 
 	public AanvraagObjects_NonReferenten(){
-		System.out.println("test1 "+StaticClass.driver);
 		PageFactory.initElements(StaticClass.driver, this);
 	}
 	@FindBy(xpath="//label[@class='for-checkbox uncheck']") List<WebElement> chkbx_NonReferenten;
 	@FindBy(id="Verder_2")	public WebElement Field_Verder_2;	
 	
-	
-	// Met deze method wordt automatisch alle velden van het tabblad ingevuld
-	public AanvraagObjects_Bevestiging setText_TabbladNonReferenten() throws InterruptedException{
-		clickChkbxNonReferenten();
-		return clickNext();
-	}
-		
 	// De individuele velden
 	public void clickChkbxNonReferenten() throws InterruptedException{
 		chkbx_NonReferenten.get(0).click();

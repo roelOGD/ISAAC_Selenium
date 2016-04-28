@@ -12,7 +12,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class AanvraagObjects_Algemeen {
 
 	public AanvraagObjects_Algemeen(){
-		System.out.println("test1 "+StaticClass.driver);
 		PageFactory.initElements(StaticClass.driver, this);
 	}
 	
@@ -23,18 +22,6 @@ public class AanvraagObjects_Algemeen {
 	@FindBy(id="Aanvraag-EinddatumGepland_1") public WebElement Field_AanvraagEinddatumGepland_1;
 	@FindBy(id="Uploaden_1_1") public WebElement Field_Uploaden_1_1;
 	@FindBy(id="Verder_2") public WebElement Field_Verder_2;
-	
-	// Met deze method wordt automatisch alle velden van het tabblad algemeen ingevuld
-	// Alleen de verplichte velden
-	public AanvraagObjects_VraagBegroting setText_TabbladAlgemeen(String PDF_Document) throws InterruptedException{
-		int randomNumber = (int)( Math.random()); 
-		setText_AanvraagTitle_1("Aanvraag - " +  randomNumber);
-		setText_AanvraagSamenvatting_1("Dit is een automatisch gegenereerde aanvraag");
-		setText_AanvraagStartdatumGepland_1("01-01-2019");
-		setText_AanvraagEinddatumGepland_1("01-01-2020");
-		uploadDocument_Field_Uploaden_1_1(PDF_Document);
-		return clickNext();
-	}
 	
 	// De individuele velden
 	public void setText_AanvraagTitle_1(String text){

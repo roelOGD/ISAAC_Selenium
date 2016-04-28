@@ -29,26 +29,6 @@ public class RelatiebeheerObjects_ZoekenOrganisatie {
 	@FindBy(xpath="//input[@value='Zoeken']") List<WebElement> btnZoek;
 	@FindBy(xpath="//input[@value='Terug']") List<WebElement> btnTerug;
 
-	//@FindBy(name="back")	public WebElement Field_Terug;	
-	
-	
-	// Met deze method wordt automatisch alle velden van het tabblad algemeen ingevuld
-	// Alleen de verplichte velden
-	public AanvraagObjects_NonReferenten setText_TabbladZoekenOrganisaties() throws InterruptedException {
-		setText_Organisatieacroniem("eur");
-		clickZoekbtn();
-		clickSearchItem();
-		//clickTerugbtn();
-		return null;
-	}
-	
-	public void setText_TabbladZoekenOrganisaties_terugNaarOrganisaties() throws InterruptedException {
-		setText_Organisatieacroniem("eur");
-		clickZoekbtn();
-		clickSearchItem();
-		//clickTerugbtn();
-	}
-	
 	public void setText_Organisatieacroniem(String text){
 		Field_Acroniem.sendKeys(text);
 		Assert.assertEquals(Field_Acroniem.getAttribute("value"), text);

@@ -26,14 +26,6 @@ public class AanvraagObjects_VraagBegroting {
 	@FindBy(id="Verder_2") public WebElement Field_Verder_2;
 	
 	
-	// Met deze method wordt automatisch alle velden van het tabblad ingevuld
-	// Alleen de verplichte velden
-	public AanvraagObjects_Organisaties setText_TabbladVraagBegroting() throws InterruptedException{
-		clickTarievenLijst_chckbx();
-		AddVraagBegrotingItem(1, "begrotingsGroep", "omschrijving", "1", "12","1", "123456");
-		return clickNext();	
-	}
-	
 	// De individuele velden
 	public void clickTarievenLijst_chckbx() throws InterruptedException{
 		chckbx_TarievenLijst.get(0).click();
