@@ -109,4 +109,33 @@ public class Aanvraag_Acties extends StaticClass{
 		aanvraagTab.zoekOpAanvraag(aanvraagTitel);
 		aanvraagDetails.afzienVanWeerwoord();
 	}
+	
+	public static void aanvraagOntvankelijkVerklaren(String username, String password, String aanvraagTitel) throws InterruptedException{
+		// Initialiseer de objecten
+		ISAAC_LoginPageObject loginPage = new ISAAC_LoginPageObject();
+		AanvraagObjects_Algemeen aanvraag = new AanvraagObjects_Algemeen();
+		AanvraagObjects_VraagBegroting vraagBegroting = new AanvraagObjects_VraagBegroting();
+		AanvraagObjects_Organisaties organisaties = new AanvraagObjects_Organisaties();
+		AanvraagObjects_NonReferenten nonReferenten = new AanvraagObjects_NonReferenten();
+		AanvraagObjects_Bevestiging bevestiging =  new AanvraagObjects_Bevestiging();
+		RelatiebeheerObjects_ZoekenOrganisatie zoekenRelatiebeheer = new RelatiebeheerObjects_ZoekenOrganisatie();
+		AanvraagObjects_AanvraagTab aanvraagTab = new AanvraagObjects_AanvraagTab();
+		AanvraagObjects_Details aanvraagDetails = new AanvraagObjects_Details();
+		BaseMenuMethods menu = new BaseMenuMethods();
+		ISAAC_HomePage homePage = new ISAAC_HomePage();
+		Uitloggen uitloggen = new Uitloggen();
+		// Ga naar ISAAC
+		driver.get("https://nwo.acc.isaac.spinozanet.nl/nl/");
+
+		//Aanmelden
+		loginPage.setText_TaalNederlands();	
+		loginPage.setText_UsernameLogin(username);
+		loginPage.setText_PasswordLogin(password);
+		loginPage.ClickLogin();
+			
+		// Ga naar de aanvraag pagina
+		menu.goToAanvragenPageNL();
+		aanvraagTab.zoekOpAanvraag(aanvraagTitel);
+		aanvraagDetails.afzienVanWeerwoord();
+	}
 }

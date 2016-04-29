@@ -21,7 +21,7 @@ public class AanvraagObjects_Organisaties {
 	
 	public RelatiebeheerObjects_ZoekenOrganisatie toevoegenVerwantwoordelijkeOrganisatie(){
 		toevoegenVerwantwoordelijkeOrganisatie.click();
-		WebDriverWait wait = new WebDriverWait(StaticClass.driver, 10);
+		WebDriverWait wait = new WebDriverWait(StaticClass.driver, 15);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("organisatienaam")));
 		return new RelatiebeheerObjects_ZoekenOrganisatie();
 	}
