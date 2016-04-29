@@ -19,7 +19,7 @@ public class NewStandaardAanvraag extends StaticClass {
 		return super.getDriver();
 	}
 
-	public static void NewStandaardAanvraagMaken(String username, String password, String aanvraagUrl, String voorbeeldDocumentPdf) throws InterruptedException{
+	public static void NewStandaardAanvraagMaken(String username, String password, String aanvraagUrl, String voorbeeldDocumentPdf, String aanvraagTitle) throws InterruptedException{
 	
 	// Initialiseer de objecten
 	ISAAC_LoginPageObject loginPage = new ISAAC_LoginPageObject();
@@ -31,7 +31,7 @@ public class NewStandaardAanvraag extends StaticClass {
 	RelatiebeheerObjects_ZoekenOrganisatie zoekenRelatiebeheer = new RelatiebeheerObjects_ZoekenOrganisatie();
 	BaseMenuMethods menu = new BaseMenuMethods();
 	ISAAC_HomePage homePage = new ISAAC_HomePage();
-	
+	Uitloggen uitloggen = new Uitloggen();
 	// Ga naar ISAAC
 	driver.navigate().to("https://nwo.acc.isaac.spinozanet.nl/nl/");
 
@@ -45,7 +45,7 @@ public class NewStandaardAanvraag extends StaticClass {
 	menu.goToSpecifiekeAanvraag(aanvraagUrl);
 		
 	// Vul het tabblad algemeen in op de aanvraag
-	aanvraag.setText_AanvraagTitle_1("Aanvraag - Automatisch");
+	aanvraag.setText_AanvraagTitle_1(aanvraagTitle);
 	aanvraag.setText_AanvraagSamenvatting_1("Dit is een automatisch gegenereerde aanvraag");
 	aanvraag.setText_AanvraagStartdatumGepland_1("01-01-2019");
 	aanvraag.setText_AanvraagEinddatumGepland_1("01-01-2020");
@@ -76,5 +76,7 @@ public class NewStandaardAanvraag extends StaticClass {
 	// Vul het tabblad bevestigen in
 	bevestiging.clickChkbxAanvraagOndertekendn();
 	bevestiging.clickNext();
+	
+	uitloggen.uitloggen();
 	}
 }

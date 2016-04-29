@@ -18,6 +18,8 @@ public class BaseMenuMethods {
 		WebDriverWait wait = new WebDriverWait(StaticClass.driver, 10);
 		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href*='subsidieaanvraag']")));
 		element.click();
+		WebDriverWait wait2 = new WebDriverWait(StaticClass.driver, 10);
+		wait2.until(ExpectedConditions.presenceOfElementLocated(By.id("filter-Werklijst_Aanvragen_Aanvrager_2")));
 	}
 	
 	public void goToProjectenPageNL(){

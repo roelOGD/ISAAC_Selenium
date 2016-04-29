@@ -15,7 +15,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class AanvraagObjects_VraagBegroting {
 
 	public AanvraagObjects_VraagBegroting(){
-		System.out.println("test1 "+StaticClass.driver);
 		PageFactory.initElements(StaticClass.driver, this);
 	}
 	
@@ -28,6 +27,7 @@ public class AanvraagObjects_VraagBegroting {
 	
 	// De individuele velden
 	public void clickTarievenLijst_chckbx() throws InterruptedException{
+		Thread.sleep(100);
 		chckbx_TarievenLijst.get(0).click();
 	}
 		

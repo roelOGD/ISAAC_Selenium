@@ -28,7 +28,7 @@ public class AanvraagObjects_Organisaties {
 	
 	public AanvraagObjects_NonReferenten clickNext(){
 		Field_Verder_2.click();
-		WebDriverWait wait = new WebDriverWait(StaticClass.driver, 10);
+		WebDriverWait wait = new WebDriverWait(StaticClass.driver, 15);
 		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("Aanvraag-GeenNonReferenten_1")));
 		return new AanvraagObjects_NonReferenten();
 	}
