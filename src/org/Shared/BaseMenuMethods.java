@@ -23,6 +23,15 @@ public class BaseMenuMethods {
 
 	}
 	
+	public void goToAanvragenPageNLAdmin() throws InterruptedException{
+		WebDriverWait wait = new WebDriverWait(StaticClass.driver, 10);
+		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href*='subsidierondes']")));
+		element.click();
+		WebDriverWait wait2 = new WebDriverWait(StaticClass.driver, 10);
+		wait2.until(ExpectedConditions.presenceOfElementLocated(By.id("filter-Werklijst_Subsidierondes_BMW_2")));
+
+	}
+	
 	public void goToProjectenPageNL(){
 		WebDriverWait wait = new WebDriverWait(StaticClass.driver, 10);
 		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("a[href*='projecten1']")));

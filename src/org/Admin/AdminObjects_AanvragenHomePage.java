@@ -17,16 +17,16 @@ public class AdminObjects_AanvragenHomePage {
 	
 	@FindBy(xpath="//input[@id='filter-Werklijst_Subsidierondes_BMW_2']") WebElement zoekFilter;
 	
-	public void zoekOpAanvraag(String text) throws InterruptedException{
+	public void zoekOpRonde(String text) throws InterruptedException{
 		zoekFilter.sendKeys(text);
-		clickGevondenAanvraag(text);
+		Thread.sleep(3000);	
+		clickGevondenRonde(text);
 	}
 
-	public void clickGevondenAanvraag(String text) throws InterruptedException{
-		Thread.sleep(2000);	
+	public void clickGevondenRonde(String text) throws InterruptedException{
 		List<WebElement> we = StaticClass.driver.findElements(By.xpath("//div[@class='aq-answer-holder ']"));
 		we.get(0).click();
 		WebDriverWait wait = new WebDriverWait(StaticClass.driver, 10);
-		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("Stuur-ToonOverigeSignalen_1")));	
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("Aanvragen_1")));	
 	}	
 }
